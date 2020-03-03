@@ -1,0 +1,15 @@
+demoMod\api\abstracts\AbstractSynergyCard.class
+demoMod\api\patches\SaveAndContinuePatch.class
+demoMod\api\patches\ShowCardAndObtainEffectPatch$PatchUpdate.class
+demoMod\api\patches\FastCardObtainEffectPatch.class
+demoMod\api\patches\SaveAndContinuePatch$PatchDeleteSave.class
+demoMod\api\patches\FastCardObtainEffectPatch$PatchUpdate.class
+demoMod\api\patches\CardGroupPatch.class
+demoMod\api\patches\ShowCardAndObtainEffectPatch.class
+demoMod\api\abstracts\AbstractSynergyRelic.class
+demoMod\api\interfaces\PostCardObtainSubscriber.class
+demoMod\api\abstracts\Synergy.class
+demoMod\api\patches\CardGroupPatch$PatchRemoveCard.class
+demoMod\BetterSynergies.class
+demoMod\api\abstracts\AbstractSynergyPotion.class
+demoMod\api\interfaces\SynergyItem.class
