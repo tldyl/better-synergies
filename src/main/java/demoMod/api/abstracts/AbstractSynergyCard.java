@@ -17,20 +17,14 @@ public abstract class AbstractSynergyCard extends CustomCard implements PostCard
 
     @Override
     public void onRemoveFromMasterDeck() {
-        for (String ID : this.getAllSynergiesID()) {
-            BetterSynergies.getSynergy(ID).dig(this);
-            System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-        }
+        BetterSynergies.dig(this);
         BetterSynergies.unsubscribe(this);
     }
 
     @Override
     public void onCardObtain(AbstractCard card) {
         if (card == this) {
-            for (String ID : this.getAllSynergiesID()) {
-                BetterSynergies.getSynergy(ID).embed(this);
-                System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-            }
+            BetterSynergies.embed(this);
         }
     }
 

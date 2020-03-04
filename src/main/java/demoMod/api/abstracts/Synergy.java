@@ -31,7 +31,7 @@ public abstract class Synergy { //一个组合
         }
     }
 
-    void embed(SynergyItem item) {
+    public void embed(SynergyItem item) {
         int index = 0;
         for (List<String> slot : lists) {
             boolean match = false;
@@ -49,7 +49,7 @@ public abstract class Synergy { //一个组合
         slot.add(item);
     }
 
-    void dig(SynergyItem item) {
+    public void dig(SynergyItem item) {
         for (List<SynergyItem> slot : slots) {
             boolean match = false;
             for (SynergyItem item1 : slot) {

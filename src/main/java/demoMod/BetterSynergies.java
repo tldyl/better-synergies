@@ -2,12 +2,12 @@ package demoMod;
 
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import demoMod.api.abstracts.Synergy;
 import demoMod.api.interfaces.PostCardObtainSubscriber;
+import demoMod.api.interfaces.SynergyItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,12 +19,9 @@ import java.util.Map;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
-public class BetterSynergies implements PostUpdateSubscriber,
-                                        PostRenderSubscriber,
-                                        PostCardObtainSubscriber,
+public class BetterSynergies implements PostCardObtainSubscriber,
                                         PotionGetSubscriber,
-                                        PostPotionUseSubscriber,
-                                        StartGameSubscriber {
+                                        PreStartGameSubscriber {
 
     static List<ISubscriber> postCardObtainSubscribers = new ArrayList<>();
     static List<ISubscriber> potionGetSubscribers = new ArrayList<>();
@@ -77,14 +74,24 @@ public class BetterSynergies implements PostUpdateSubscriber,
         }
     }
 
-    @Override
-    public void receivePostRender(SpriteBatch sb) {
-
+    public static void embed(SynergyItem item) {
+        logger.info("Get a item. Item id:" + item.getItemId());
+        logger.info("Getting its all synergies...");
+        for (String ID : item.getAllSynergiesID()) {
+            Synergy synergy = BetterSynergies.getSynergy(ID);
+            synergy.embed(item);
+            System.out.println("BetterSynergies:Is synergy " + synergy.name + "activated:" + synergy.isActive());
+        }
     }
 
-    @Override
-    public void receivePostUpdate() {
-
+    public static void dig(SynergyItem item) {
+        logger.info("Dig a item. Item id:" + item.getItemId());
+        logger.info("Digging it from all its synergies...");
+        for (String ID : item.getAllSynergiesID()) {
+            Synergy synergy = BetterSynergies.getSynergy(ID);
+            synergy.dig(item);
+            System.out.println("BetterSynergies:Is synergy " + synergy.name + "activated:" + synergy.isActive());
+        }
     }
 
     @Override
@@ -110,12 +117,7 @@ public class BetterSynergies implements PostUpdateSubscriber,
     }
 
     @Override
-    public void receivePostPotionUse(AbstractPotion potion) {
-
-    }
-
-    @Override
-    public void receiveStartGame() {
+    public void receivePreStartGame() {
         resetAll();
     }
 }

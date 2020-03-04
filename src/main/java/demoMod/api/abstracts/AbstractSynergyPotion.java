@@ -15,18 +15,12 @@ public abstract class AbstractSynergyPotion extends CustomPotion implements Poti
     @Override
     public void receivePotionGet(AbstractPotion potion) {
         if (potion == this) {
-            for (String ID : this.getAllSynergiesID()) {
-                BetterSynergies.getSynergy(ID).embed(this);
-                System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-            }
+            BetterSynergies.embed(this);
         }
     }
 
     public void use(AbstractCreature target) {
-        for (String ID : this.getAllSynergiesID()) {
-            BetterSynergies.getSynergy(ID).dig(this);
-            System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-        }
+        BetterSynergies.dig(this);
         BetterSynergies.unsubscribe(this);
     }
 

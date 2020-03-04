@@ -20,18 +20,12 @@ public abstract class AbstractSynergyRelic extends CustomRelic implements Synerg
 
     @Override
     public void onEquip() {
-        for (String ID : this.getAllSynergiesID()) {
-            BetterSynergies.getSynergy(ID).embed(this);
-            System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-        }
+        BetterSynergies.embed(this);
     }
 
     @Override
     public void onUnequip() {
-        for (String ID : this.getAllSynergiesID()) {
-            BetterSynergies.getSynergy(ID).dig(this);
-            System.out.println("BetterSynergies:Is synergy " + BetterSynergies.getSynergy(ID).name + "activated:" + BetterSynergies.getSynergy(ID).isActive());
-        }
+        BetterSynergies.dig(this);
     }
 
     public String getItemId() {
