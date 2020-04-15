@@ -68,8 +68,8 @@ lists规定了每个栏位中能放什么组件
 
 例：
 
-	public class MySynergyRelic {
-		public static final String ID = "MyPrefix:MySynergyRelic";
+	public class MySynergyRelic extends AbstractSynergyRelic {
+	    public static final String ID = "MyPrefix:MySynergyRelic";
 	    public static final String IMG_PATH = "myImages/relics/synergyRelic.png";
 	
 	    public SynergyRelic() {
