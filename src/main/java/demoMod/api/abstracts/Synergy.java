@@ -66,29 +66,33 @@ public abstract class Synergy { //一个组合
     public boolean isActive() {
         for (List<SynergyItem> slot : slots) {
             if (slot.size() == 0) {
-                if (isActive) onDisable();
+                if (isActive) {
+                    for (List<SynergyItem> slot1 : slots) {
+                        for (SynergyItem item : slot1) {
+                            item.onDisable();
+                        }
+                    }
+                    onDisable();
+                }
                 isActive = false;
                 return false;
             }
         }
-        if (!isActive) onActivate();
+        if (!isActive) {
+            for (List<SynergyItem> slot : slots) {
+                for (SynergyItem item : slot) {
+                    item.onActivate();
+                }
+            }
+            onActivate();
+        }
         isActive = true;
         return true;
     }
 
     public void onActivate() {
-        for (List<SynergyItem> slot : slots) {
-            for (SynergyItem item : slot) {
-                item.onActivate();
-            }
-        }
     }
 
     public void onDisable() {
-        for (List<SynergyItem> slot : slots) {
-            for (SynergyItem item : slot) {
-                item.onDisable();
-            }
-        }
     }
 }

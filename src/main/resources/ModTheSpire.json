@@ -4,7 +4,7 @@
   "author_list": ["Temple9"],
   "description": "一个以枪牢mod中的组合系统为原型而开发的一个组合框架，可以更方便地建立和管理卡牌、遗物、药水之间复杂的组合关系。",
   "dependencies": ["basemod"],
-  "version": "1.0",
+  "version": "1.1",
   "sts_version": "01-21-2020",
   "update_json": ""
 }
